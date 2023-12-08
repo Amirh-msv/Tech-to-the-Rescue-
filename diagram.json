@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": -233.55,
+      "left": 358.8,
+      "attrs": { "env": "circuitpython-8.0.2" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix1",
+      "top": -191.4,
+      "left": -88.56,
+      "attrs": { "chain": "4", "layout": "fc16" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix2",
+      "top": -115,
+      "left": -88.24,
+      "rotate": 180,
+      "attrs": { "chain": "4", "layout": "fc16" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix3",
+      "top": -37.8,
+      "left": -88.56,
+      "attrs": { "chain": "4", "layout": "fc16" }
+    },
+    {
+      "type": "wokwi-max7219-matrix",
+      "id": "matrix4",
+      "top": 38.6,
+      "left": -88.24,
+      "rotate": 180,
+      "attrs": { "chain": "4", "layout": "fc16" }
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -268.04, "left": 268.8, "attrs": {} }
+  ],
+  "connections": [
+    [ "matrix1:GND.2", "matrix2:GND", "black", [ "h-47.8", "v89.07" ] ],
+    [ "matrix1:DOUT", "matrix2:DIN", "blue", [ "h-38.2", "v69.87" ] ],
+    [ "matrix1:CS.2", "matrix2:CS", "green", [ "h-28.6", "v50.67" ] ],
+    [ "matrix1:CLK.2", "matrix2:CLK", "orange", [ "h-19", "v31.47" ] ],
+    [ "matrix2:CLK.2", "matrix3:CLK", "orange", [ "h58.3", "v110.3" ] ],
+    [ "matrix2:CS.2", "matrix3:CS", "green", [ "h48.7", "v91.1" ] ],
+    [ "matrix2:DOUT", "matrix3:DIN", "blue", [ "h39.1", "v71.9" ] ],
+    [ "matrix2:GND.2", "matrix3:GND", "black", [ "h29.5", "v52.7" ] ],
+    [ "matrix3:V+", "matrix2:V+.2", "red", [ "h19.2", "v-31.46" ] ],
+    [ "matrix2:V+", "matrix1:V+.2", "red", [ "h-56.74", "v-110.5" ] ],
+    [ "matrix4:V+", "matrix3:V+.2", "red", [ "h-56.74", "v-115.8" ] ],
+    [ "matrix3:GND.2", "matrix4:GND", "black", [ "h-47.84", "v93.34" ] ],
+    [ "matrix4:DIN", "matrix3:DOUT", "blue", [ "h-37.54", "v-67.8" ] ],
+    [ "matrix4:CS", "matrix3:CS.2", "green", [ "h-27.94", "v-58.2" ] ],
+    [ "matrix4:CLK", "matrix3:CLK.2", "orange", [ "h-18.34", "v-39" ] ],
+    [ "mega:5V", "matrix1:V+", "red", [ "h-33.66", "v-77.39" ] ],
+    [ "mega:GND.2", "matrix1:GND", "black", [ "h-42.41", "v-79.48" ] ],
+    [ "mega:11", "matrix1:DIN", "blue", [ "h20.97", "v249.88", "h-211.2", "v-211.2" ] ],
+    [ "mega:10", "matrix1:CS", "green", [ "h30.57", "v249.98", "h-230.4", "v-220.8" ] ],
+    [ "mega:13", "matrix1:CLK", "orange", [ "h40.17", "v288.08", "h-249.6", "v-220.8" ] ],
+    [ "matrix1:V+", "vcc1:VCC", "red", [ "h0" ] ],
+    [ "matrix1:GND", "pico:GND.1", "black", [ "h0" ] ],
+    [ "matrix1:DIN", "pico:GP7", "blue", [ "h0" ] ],
+    [ "matrix1:CS", "pico:GP5", "green", [ "h0" ] ],
+    [ "matrix1:CLK", "pico:GP6", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
